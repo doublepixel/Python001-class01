@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-
+import pandas
 
 class MaoyanPipeline:
+
     def process_item(self, item, spider):
+
+        work02_movie = pandas.DataFrame(item.values())
+        work02_movie.to_csv('./work02_movie.csv', encoding='utf8', index=False, header=False)
         return item

@@ -39,10 +39,18 @@ ROBOTSTXT_OBEY = True
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:70.0) Gecko/20100101 Firefox/70.0",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept-Language": "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Pragma": "no-cache",
+    "Host": "maoyan.com",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-Mode": "navigate",
+    "Cookie": '__mta=154998279.1592960688989.1593131493789.1593144614148.11; uuid_n_v=v1; uuid=B0AF5F60B5B611EA95E3C92BBC8FF019A96EEF9A7E434DB382A16656A99567EC; _csrf=a886d660d68686bb489f21269122dc1db906e44109f530cdf8e13acf18f3355e; _lxsdk_cuid=172e3db1894c8-035685855ecf26-153e6554-384000-172e3db1894c8; _lxsdk=B0AF5F60B5B611EA95E3C92BBC8FF019A96EEF9A7E434DB382A16656A99567EC; mojo-uuid=986a4016b78b099a323042888bdc74c1; Hm_lvt_703e94591e87be68cc8da0da7cbd0be2=1592960688; __mta=154998279.1592960688989.1593080973917.1593131493789.10; Hm_lpvt_703e94591e87be68cc8da0da7cbd0be2=1593144614; _lxsdk_s=172ef566b01-23f-fd9-f2%7C%7C1'
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
@@ -64,9 +72,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'maoyan.pipelines.MaoyanPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'maoyan.pipelines.MaoyanPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
