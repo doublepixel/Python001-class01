@@ -11,15 +11,15 @@ class MaoyanFilmSpider(scrapy.Spider):
     def parse(self, response):
         film = MaoyanItem()
         print(response.text)
-        dl = response.xpath('//dl[@class="movie-list"]/dd')
+        dl = response.xpath('//div[@class="movie-item-hover"]')
         type(dl)
         for dd in dl:
             # 电影名称
-            film["film_name"]= "".join(dd.xpath('.//div[@class="channel-detail movie-item-title"]/@title').extract()[0])
-            # 电影类型
-            film["film_type"] = "".join(dd.xpath('.//div[1]/div[2]/a/div/div[2]/text()').extract()[1]).strip()
+            film["film_name"]= "".join(dd.xpath('./a/div/div[1]/span[1]/text()').extract()[0])
+            # # 电影类型
+            film["film_type"] = "".join(dd.xpath('./a/div/div[2]/text()').extract()[1]).strip()
             # 上映时间
-            film["film_date"] = "".join(dd.xpath('.//div[1]/div[2]/a/div/div[4]/text()').extract()[1]).strip()
+            film["film_date"] = "".join(dd.xpath('./a/div/div[4]/text()').extract()[1]).strip()
 
             print(film)
             yield film
