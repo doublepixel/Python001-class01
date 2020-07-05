@@ -20,8 +20,8 @@ headers={
 url = "https://shimo.im/lizard-api/auth/password/login"
 
 data = {
-    "mobile": "+8618801409523",
-    "password": "lvyz78961"
+    "mobile": "+",
+    "password": ""
 }
 response = requests.post(url, data=data)
 
