@@ -20,8 +20,9 @@ class MaoyanFilmSpider(scrapy.Spider):
             film["film_type"] = "".join(dd.xpath('./a/div/div[2]/text()').extract()[1]).strip()
             # 上映时间
             film["film_date"] = "".join(dd.xpath('./a/div/div[4]/text()').extract()[1]).strip()
-
-            print(film)
+            # if film["film_date"] == "":
+            #     film["film_date"] = "2020-07-05"
+            # print(film)
             yield film
 
         # yield scrapy.Request(self.start_urls, callback=self.parse)

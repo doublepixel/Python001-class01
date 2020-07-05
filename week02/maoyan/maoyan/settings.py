@@ -49,7 +49,7 @@ DEFAULT_REQUEST_HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
     "Sec-Fetch-Site": "none",
     "Sec-Fetch-Mode": "navigate",
-    "Cookie": '__mta=154998279.1592960688989.1593131493789.1593144614148.11; uuid_n_v=v1; uuid=B0AF5F60B5B611EA95E3C92BBC8FF019A96EEF9A7E434DB382A16656A99567EC; _csrf=a886d660d68686bb489f21269122dc1db906e44109f530cdf8e13acf18f3355e; _lxsdk_cuid=172e3db1894c8-035685855ecf26-153e6554-384000-172e3db1894c8; _lxsdk=B0AF5F60B5B611EA95E3C92BBC8FF019A96EEF9A7E434DB382A16656A99567EC; mojo-uuid=986a4016b78b099a323042888bdc74c1; Hm_lvt_703e94591e87be68cc8da0da7cbd0be2=1592960688; mojo-session-id={"id":"985bf86f5bec1d91e0311a6415900128","time":1593259815546}; mojo-trace-id=1; Hm_lpvt_703e94591e87be68cc8da0da7cbd0be2=1593259817; __mta=154998279.1592960688989.1593144614148.1593259817851.12; _lxsdk_s=172f5af6d51-b9-66f-eab%7C%7C3'
+    "Cookie": '__mta=154998279.1592960688989.1593131493789.1593144614148.11; uuid_n_v=v1; uuid=B0AF5F60B5B611EA95E3C92BBC8FF019A96EEF9A7E434DB382A16656A99567EC; _lxsdk_cuid=172e3db1894c8-035685855ecf26-153e6554-384000-172e3db1894c8; _lxsdk=B0AF5F60B5B611EA95E3C92BBC8FF019A96EEF9A7E434DB382A16656A99567EC; mojo-uuid=986a4016b78b099a323042888bdc74c1; Hm_lvt_703e94591e87be68cc8da0da7cbd0be2=1592960688; __mta=154998279.1592960688989.1593144614148.1593259828596.12'
 }
 
 # Enable or disable spider middlewares
@@ -73,7 +73,8 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'maoyan.pipelines.MaoyanPipeline': 300,
+   # 'maoyan.pipelines.MaoyanPipeline': 300,
+   'maoyan.pipelines.PymysqlPipeline':1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -96,3 +97,8 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+MYSQL_HOST = 'localhost'
+MYSQL_DBNAME = 'django0115'         #数据库名字，请修改
+MYSQL_USER = 'root'             #数据库账号，请修改
+MYSQL_PASSWD = 'root'         #数据库密码，请修改
+MYSQL_PORT = 3306               #数据库端口
