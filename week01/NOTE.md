@@ -1,7 +1,7 @@
 学习笔记
 
 ### 1、迭代器
-```
+```python
 def chain(num):
     for it in range(num):
         yield it
@@ -14,8 +14,7 @@ next(y)     # StopIteration
 ```
 
 ### 常用列表推导式
-```
-
+```python
 # 列表推导式
 mylist2 = [i**2 for i in range(1, 11) if i > 5]
 
@@ -64,4 +63,30 @@ USER_AGENT = random.choice(USER_AGENT_LIST)
 跨域请求，调试
 ```shell script
 yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)
+```
+
+### 4、ajax局部数据动态获取
+Asynchronous Javascript And XML  异步Javascript和XML，ajax实现了局部刷新效果，通过使数据和服务端 快速动态交互，不需要刷新及以及加载整个页面，对网页对某部分内容进行更新。
+ajax有涉及到创建对象，发送接口请求，响应数据，结果判断等。
+如JQuery的ajax：
+```html
+function savedata()
+{
+           var name = $('#name').val();
+           var message = $('#message').val();
+           $.ajax({
+                url: "/savedata/",
+                data:"name="+ name + "&message=" + message,
+                headers:{'X-CSRFToken': '{{csrf_token }}'}, //csrf
+                contentType:'application/x-www-form-urlencoded; charset=utf-8',
+                type: "POST",
+                success: function (result) {
+                 //  console.log();
+                },
+                fail: function (result) {
+                    debugger
+                }
+           });
+       }
+
 ```
