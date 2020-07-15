@@ -1,4 +1,14 @@
 学习笔记
+```shell script
+#学号: G20200389020419
+#姓名: lvyz
+#班级: 3班
+#小组: 8组
+#作业&总结链接: https://github.com/doublepixel/Python001-class01/tree/master/week02
+```
+删除本地分支：
+    git branch -d dev
+    
 
 ### 1、异常
 ```python
@@ -48,9 +58,43 @@ scrapy crawl maoyao_spider --nolog
 
 ```
 
+redis-cli
+settings 制定IP地址的信息
+```python
+# redis信息
+REDIS_HOST='127.0.0.1'
+REDIS_PORT=6379
+
+# Scheduler的QUEUE
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+# 去重
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+# Requests的默认优先级队列
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
+
+# 将Requests队列持久化到Redis，可支持暂停或重启爬虫
+SCHEDULER_PERSIST = True
+
+# 将爬取到的items保存到Redis
+ITEM_PIPELINES = {
+    'scrapy_redis.pipelines.RedisPipeline': 300
+}
+```
+piplines设置
+```python
+class ScrapyclusterPipeline:
+    def process_item(self, item, spider):
+        return item
 
 
+#  redis 存储了item
+#  bash$  redis-cli
+#  redis> keys *
+#  redis> type cluster:items
+#  redis> lpop cluster:items
+#  redis> keys *
 
 
-
-
+```
